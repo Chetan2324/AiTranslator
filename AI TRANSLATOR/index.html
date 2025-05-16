@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AI Language Translator Pro</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add animate.css for enhanced animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+    <!-- Theme toggle button with improved icon and tooltip -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i>
+        <span class="tooltip">Switch Theme</span>
+    </button>
+
+    <div class="container">
+        <div class="chatbot-card">
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon">🌐</div>
+                </div>
+                <h1>AI Language Translator <span class="pro-badge">Pro</span></h1>
+            </div>
+            
+            <div class="language-selectors">
+                <div class="select-wrapper">
+                    <label for="from-language">From:</label>
+                    <select id="from-language">
+                        <option value="auto">🔍 Auto Detect</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="hi">🇮🇳 Hindi</option>
+                        <option value="es">🇪🇸 Spanish</option>
+                        <option value="fr">🇫🇷 French</option>
+                        <option value="de">🇩🇪 German</option>
+                        <option value="it">🇮🇹 Italian</option>
+                        <option value="ja">🇯🇵 Japanese</option>
+                        <option value="ne">🇳🇵 Nepali</option>
+                        <option value="ar">🇸🇦 Arabic</option>
+                        <option value="ko">🇰🇷 Korean</option>
+                        <option value="ru">🇷🇺 Russian</option>
+                        <option value="zh">🇨🇳 Chinese</option>
+                        <option value="pt">🇵🇹 Portuguese</option>
+                    </select>
+                </div>
+
+                <button id="swapBtn" class="swap-btn" title="Swap Languages">
+                    <i class="fas fa-exchange-alt"></i>
+                    <div class="swap-effect"></div>
+                </button>
+
+                <div class="select-wrapper">
+                    <label for="to-language">To:</label>
+                    <select id="to-language">
+                        <option value="hi">🇮🇳 Hindi</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="es">🇪🇸 Spanish</option>
+                        <option value="fr">🇫🇷 French</option>
+                        <option value="de">🇩🇪 German</option>
+                        <option value="it">🇮🇹 Italian</option>
+                        <option value="ja">🇯🇵 Japanese</option>
+                        <option value="ne">🇳🇵 Nepali</option>
+                        <option value="ar">🇸🇦 Arabic</option>
+                        <option value="ko">🇰🇷 Korean</option>
+                        <option value="ru">🇷🇺 Russian</option>
+                        <option value="zh">🇨🇳 Chinese</option>
+                        <option value="pt">🇵🇹 Portuguese</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-box" id="chat-box">
+                    <div class="welcome-message bot-message animate__animated animate__fadeIn">
+                        <div class="message-content">
+                            <div class="bot-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-text">
+                                Hello! I'm your AI translator assistant. Choose your languages and start typing to translate.
+                            </div>
+                        </div>
+                        <div class="message-actions">
+                            <button class="listen-btn" title="Listen">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="copy-btn" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="typing-indicator" id="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="Type a message to translate..." />
+                    <div class="input-actions">
+                        <button id="clearBtn" class="clear-btn" title="Clear input">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="micBtn" class="mic-btn" title="Use microphone">
+                    <i class="fas fa-microphone"></i>
+                    <div class="ripple"></div>
+                </button>
+                <button id="sendBtn" class="send-btn" title="Send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <div class="features-bar">
+                <button class="feature-btn" id="historyBtn" title="View History">
+                    <i class="fas fa-history"></i>
+                </button>
+                <button class="feature-btn" id="favoritesBtn" title="Favorites">
+                    <i class="far fa-star"></i>
+                </button>
+                <button class="feature-btn" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- History modal -->
+        <div class="modal" id="historyModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Translation History</h3>
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body" id="historyList">
+                    <!-- History items will be added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
+
